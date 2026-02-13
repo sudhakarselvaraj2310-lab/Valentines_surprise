@@ -5,16 +5,138 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lifetime Love Agreement</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #fdf2f8;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    overflow: hidden;
+    overflow-x: hidden;
+}
+
+/* Soft glowing background hearts */
+body::before {
+    content: "💖 💕 💗 💓 💞";
+    position: fixed;
+    font-size: 80px;
+    opacity: 0.05;
+    top: 10%;
+    left: 5%;
+    animation: floatBg 20s linear infinite;
+}
+
+@keyframes floatBg {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-200px); }
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    width: 95%;
+    max-width: 850px;
+    padding: 45px;
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.header {
+    text-align: center;
+    border-bottom: 2px dashed #f06292;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    margin: 0;
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    color: #c2185b;
+    letter-spacing: 2px;
+}
+
+.header p {
+    color: #777;
+    font-size: 14px;
+}
+
+.agreement-content {
+    line-height: 1.9;
+    color: #444;
+    font-size: 16px;
+}
+
+.agreement-content ul {
+    padding-left: 25px;
+}
+
+.agreement-content li {
+    margin-bottom: 15px;
+    transition: transform 0.3s;
+}
+
+.agreement-content li:hover {
+    transform: scale(1.03);
+}
+
+.signature-section {
+    margin-top: 35px;
+    padding-top: 25px;
+    border-top: 2px dashed #f06292;
+}
+
+input[type="password"] {
+    padding: 10px;
+    margin-top: 8px;
+    width: 140px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+button {
+    margin-top: 15px;
+    background: linear-gradient(45deg, #c2185b, #e91e63);
+    color: white;
+    border: none;
+    padding: 14px 35px;
+    font-size: 17px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.love-note {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #c2185b;
+    font-style: italic;
+    text-align: center;
+}
+
+.final-message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #c2185b;
+    text-align: center;
 }
 
 /* Floating Hearts */
@@ -23,72 +145,13 @@ body {
     bottom: -20px;
     font-size: 20px;
     animation: floatUp 6s linear infinite;
-    opacity: 0.7;
+    opacity: 0.8;
+    pointer-events: none;
 }
 
 @keyframes floatUp {
-    0% { transform: translateY(0); opacity: 0.7; }
+    0% { transform: translateY(0); opacity: 0.8; }
     100% { transform: translateY(-110vh); opacity: 0; }
-}
-
-.container {
-    background: white;
-    width: 90%;
-    max-width: 800px;
-    padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-    z-index: 10;
-}
-
-.header {
-    text-align: center;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 20px;
-    margin-bottom: 30px;
-}
-
-.header h1 {
-    margin: 0;
-    color: #c2185b;
-}
-
-.agreement-content {
-    line-height: 1.8;
-    color: #444;
-}
-
-button {
-    background: linear-gradient(45deg, #c2185b, #e91e63);
-    color: white;
-    border: none;
-    padding: 14px 30px;
-    font-size: 16px;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-button:hover { opacity: 0.85; }
-
-.love-note {
-    margin-top: 15px;
-    font-size: 15px;
-    color: #c2185b;
-    font-style: italic;
-}
-
-.final-message {
-    margin-top: 15px;
-    font-weight: bold;
-    color: #c2185b;
-}
-
-input[type="password"] {
-    padding: 8px;
-    margin-top: 10px;
-    width: 120px;
-    text-align: center;
-    font-size: 16px;
 }
 
 /* Fireworks Canvas */
@@ -113,22 +176,32 @@ canvas {
     </div>
 
     <div class="agreement-content">
+        <p>This official agreement is made between:</p>
         <p><strong>Husband:</strong> Sudhakar 🤵‍♂️<br>
            <strong>Wife:</strong> Nivetha Nisha 👰</p>
+
+        <p>Both parties agree to the following romantic terms and conditions:</p>
+
+        <ul>
+            <li>💋 A minimum of one genuine kiss daily. Initiation by either party counts equally.</li>
+            <li>📹 In case of physical distance, at least five minutes of romantic video conversation, including one sweet virtual kiss.</li>
+            <li>🔥 At least two dedicated private bonding moments per week to maintain emotional and romantic connection.</li>
+            <li>✨ Once every month, one special "Magical Night of Eternal Passion" — a celebration of love, trust, heart, and soul.</li>
+            <li>➕ Additional romantic clauses may be added at any time based on mutual happiness and love.</li>
+        </ul>
+
+        <p>
+            Failure to comply may result in extra cuddles, surprise hugs,
+            or excessive affection without prior notice 😜
+        </p>
     </div>
 
     <div class="signature-section">
-
-        <div>
-            <input type="checkbox" id="agree">
-            <label for="agree">I accept this agreement 💖</label>
-        </div>
-
-        <div>
-            <p>Enter Special Date (DDMM format):</p>
-            <input type="password" id="password" maxlength="4" placeholder="DDMM">
-        </div>
-
+        <input type="checkbox" id="agree"> I have read and accept this agreement 💖
+        <br><br>
+        Enter Special Date (DDMM):
+        <br>
+        <input type="password" id="password" maxlength="4" placeholder="DDMM">
         <br>
         <button onclick="acceptAgreement()">I Love You ❤️</button>
 
@@ -137,13 +210,12 @@ canvas {
         </p>
 
         <div class="final-message" id="message"></div>
-
     </div>
 
 </div>
 
 <script>
-// Floating Hearts Generator
+// Floating hearts
 function createHeart() {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -155,28 +227,27 @@ function createHeart() {
 }
 setInterval(createHeart, 500);
 
-// Fireworks Effect
+// Fireworks
 const canvas = document.getElementById("fireworks");
 const ctx = canvas.getContext("2d");
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-function firework() {
-    for (let i = 0; i < 100; i++) {
+function fireworkBurst() {
+    for (let i = 0; i < 90; i++) {
         ctx.beginPath();
         ctx.arc(
             Math.random() * canvas.width,
             Math.random() * canvas.height,
-            2,
+            3,
             0,
             Math.PI * 2
         );
-        ctx.fillStyle = `hsl(${Math.random() * 360},100%,50%)`;
+        ctx.fillStyle = `hsl(${Math.random()*360},100%,60%)`;
         ctx.fill();
     }
 }
 
-// Password + Redirect Logic
 function acceptAgreement() {
     const checkbox = document.getElementById("agree");
     const password = document.getElementById("password").value;
@@ -187,8 +258,13 @@ function acceptAgreement() {
         return;
     }
 
+    if (!/^\d{4}$/.test(password)) {
+        message.innerHTML = "Enter date in DDMM format 💖";
+        return;
+    }
+
     if (password !== "1412") {
-        message.innerHTML = "Wrong date format or incorrect special date 💔";
+        message.innerHTML = "That is not our special day 😜 Try again.";
         return;
     }
 
@@ -196,7 +272,7 @@ function acceptAgreement() {
 
     let count = 0;
     const interval = setInterval(() => {
-        firework();
+        fireworkBurst();
         count++;
         if (count > 8) {
             clearInterval(interval);
