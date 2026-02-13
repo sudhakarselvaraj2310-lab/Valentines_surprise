@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For My Love ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: linear-gradient(to top, #ffdde1, #ee9ca7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Arial';
+}
+
+/* Floating Flowers */
+.flower {
+    position: absolute;
+    font-size: 25px;
+    animation: float 10s linear infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(100vh) rotate(0deg); opacity: 1;}
+    100% {transform: translateY(-10vh) rotate(360deg); opacity: 0;}
+}
+
+/* Silhouette Couple */
+.couple {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 120px;
+    color: black;
+    opacity: 0.8;
+}
+
+/* Romantic Button */
+button {
+    padding: 20px 50px;
+    font-size: 22px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, #ff0066, #ff4d94);
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 20px pink;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 40px red;
+}
+
+h1 {
+    color: #b30059;
+    text-shadow: 0 0 15px white;
+    margin-bottom: 40px;
+    z-index: 10;
+}
+</style>
+</head>
+
+<body>
+
+<h1>To My Beautiful Wife 🌸</h1>
+
+<a href="video.html">
+    <button>I Love You ❤️</button>
+</a>
+
+<div class="couple">
+    💑
+</div>
+
+<script>
+	
+/* Generate Random Flowers */
+const flowers = ["🌸","🌹","🌺","🌷","💐"];
+
+setInterval(() => {
+    let flower = document.createElement("div");
+    flower.className = "flower";
+    flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.fontSize = Math.random() * 20 + 20 + "px";
+    document.body.appendChild(flower);
+
+    setTimeout(() => {
+        flower.remove();
+    }, 10000);
+}, 400);
+</script>
+
+</body>
+</html>
