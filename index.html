@@ -9,11 +9,26 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f5f7fa;
+    background: #fdf2f8;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 20px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.7; }
+    100% { transform: translateY(-110vh); opacity: 0; }
 }
 
 .container {
@@ -23,6 +38,7 @@ body {
     padding: 40px;
     border-radius: 12px;
     box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+    z-index: 10;
 }
 
 .header {
@@ -35,36 +51,11 @@ body {
 .header h1 {
     margin: 0;
     color: #c2185b;
-    font-size: 28px;
-}
-
-.header p {
-    color: #666;
-    font-size: 14px;
 }
 
 .agreement-content {
     line-height: 1.8;
     color: #444;
-    font-size: 16px;
-}
-
-.agreement-content ul {
-    padding-left: 20px;
-}
-
-.agreement-content li {
-    margin-bottom: 15px;
-}
-
-.signature-section {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.checkbox-container {
-    margin: 20px 0;
 }
 
 button {
@@ -75,23 +66,44 @@ button {
     font-size: 16px;
     border-radius: 30px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-button:hover {
-    opacity: 0.85;
+button:hover { opacity: 0.85; }
+
+.love-note {
+    margin-top: 15px;
+    font-size: 15px;
+    color: #c2185b;
+    font-style: italic;
 }
 
 .final-message {
-    margin-top: 20px;
+    margin-top: 15px;
     font-weight: bold;
     color: #c2185b;
-    font-size: 18px;
+}
+
+input[type="password"] {
+    padding: 8px;
+    margin-top: 10px;
+    width: 120px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Fireworks Canvas */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
 </style>
 </head>
 
 <body>
+
+<canvas id="fireworks"></canvas>
 
 <div class="container">
 
@@ -101,38 +113,28 @@ button:hover {
     </div>
 
     <div class="agreement-content">
-        <p>This official agreement is made between:</p>
         <p><strong>Husband:</strong> Sudhakar 🤵‍♂️<br>
            <strong>Wife:</strong> Nivetha Nisha 👰</p>
-
-        <p>Both parties agree to the following romantic terms and conditions:</p>
-
-        <ul>
-            <li>💋 A minimum of one genuine kiss daily. Initiation by either party counts equally.</li>
-
-            <li>📹 In case of physical distance, at least five minutes of romantic video conversation, including one sweet virtual kiss.</li>
-
-            <li>🔥 At least two dedicated private bonding moments per week to maintain emotional and romantic connection.</li>
-
-            <li>✨ Once every month, one special "Magical Night of Eternal Passion" — a celebration of love, trust, heart, and soul.</li>
-
-            <li>➕ Additional romantic clauses may be added at any time based on mutual happiness and love.</li>
-        </ul>
-
-        <p>
-            Failure to comply may result in extra cuddles, surprise hugs,
-            or excessive affection without prior notice 😜
-        </p>
     </div>
 
     <div class="signature-section">
 
-        <div class="checkbox-container">
+        <div>
             <input type="checkbox" id="agree">
-            <label for="agree">I have read, understood, and happily accept this Lifetime Love Agreement 💖</label>
+            <label for="agree">I accept this agreement 💖</label>
         </div>
 
+        <div>
+            <p>Enter Special Date (DDMM format):</p>
+            <input type="password" id="password" maxlength="4" placeholder="DDMM">
+        </div>
+
+        <br>
         <button onclick="acceptAgreement()">I Love You ❤️</button>
+
+        <p class="love-note">
+            I will love you and only you, until my very last breath. Forever yours ❤️
+        </p>
 
         <div class="final-message" id="message"></div>
 
@@ -141,15 +143,66 @@ button:hover {
 </div>
 
 <script>
+// Floating Hearts Generator
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 500);
+
+// Fireworks Effect
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function firework() {
+    for (let i = 0; i < 100; i++) {
+        ctx.beginPath();
+        ctx.arc(
+            Math.random() * canvas.width,
+            Math.random() * canvas.height,
+            2,
+            0,
+            Math.PI * 2
+        );
+        ctx.fillStyle = `hsl(${Math.random() * 360},100%,50%)`;
+        ctx.fill();
+    }
+}
+
+// Password + Redirect Logic
 function acceptAgreement() {
     const checkbox = document.getElementById("agree");
+    const password = document.getElementById("password").value;
     const message = document.getElementById("message");
 
-    if (checkbox.checked) {
-        message.innerHTML = "I will love you and only you, until my very last breath. Forever yours ❤️";
-    } else {
-        message.innerHTML = "Please accept the agreement before proceeding, my love 😘";
+    if (!checkbox.checked) {
+        message.innerHTML = "Please accept the agreement first 😘";
+        return;
     }
+
+    if (password !== "1412") {
+        message.innerHTML = "Wrong date format or incorrect special date 💔";
+        return;
+    }
+
+    message.innerHTML = "Correct ❤️ Celebrating our love... ✨";
+
+    let count = 0;
+    const interval = setInterval(() => {
+        firework();
+        count++;
+        if (count > 8) {
+            clearInterval(interval);
+            window.location.href = "video.html";
+        }
+    }, 300);
 }
 </script>
 
