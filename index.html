@@ -1,102 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>For My Love ❤️</title>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lifetime Love Agreement</title>
 
 <style>
 body {
     margin: 0;
-    height: 100vh;
-    overflow: hidden;
-    background: linear-gradient(to top, #ffdde1, #ee9ca7);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f5f7fa;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    font-family: 'Arial';
+    min-height: 100vh;
 }
 
-/* Floating Flowers */
-.flower {
-    position: absolute;
-    font-size: 25px;
-    animation: float 10s linear infinite;
+.container {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
 }
 
-@keyframes float {
-    0% {transform: translateY(100vh) rotate(0deg); opacity: 1;}
-    100% {transform: translateY(-10vh) rotate(360deg); opacity: 0;}
-}
-
-/* Silhouette Couple */
-.couple {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+.header {
     text-align: center;
-    font-size: 120px;
-    color: black;
-    opacity: 0.8;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-/* Romantic Button */
+.header h1 {
+    margin: 0;
+    color: #c2185b;
+    font-size: 28px;
+}
+
+.header p {
+    color: #666;
+    font-size: 14px;
+}
+
+.agreement-content {
+    line-height: 1.8;
+    color: #444;
+    font-size: 16px;
+}
+
+.agreement-content ul {
+    padding-left: 20px;
+}
+
+.agreement-content li {
+    margin-bottom: 15px;
+}
+
+.signature-section {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.checkbox-container {
+    margin: 20px 0;
+}
+
 button {
-    padding: 20px 50px;
-    font-size: 22px;
-    border: none;
-    border-radius: 50px;
-    background: linear-gradient(45deg, #ff0066, #ff4d94);
+    background: linear-gradient(45deg, #c2185b, #e91e63);
     color: white;
+    border: none;
+    padding: 14px 30px;
+    font-size: 16px;
+    border-radius: 30px;
     cursor: pointer;
-    box-shadow: 0 0 20px pink;
     transition: 0.3s;
-    z-index: 10;
 }
 
 button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 40px red;
+    opacity: 0.85;
 }
 
-h1 {
-    color: #b30059;
-    text-shadow: 0 0 15px white;
-    margin-bottom: 40px;
-    z-index: 10;
+.final-message {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #c2185b;
+    font-size: 18px;
 }
 </style>
 </head>
 
 <body>
 
-<h1>To My Beautiful Wife 🌸</h1>
+<div class="container">
 
-<a href="video.html">
-    <button>I Love You ❤️</button>
-</a>
+    <div class="header">
+        <h1>💍 Lifetime Love Agreement</h1>
+        <p>Effective Date: Today & Forever</p>
+    </div>
 
-<div class="couple">
-    💑
+    <div class="agreement-content">
+        <p>This official agreement is made between:</p>
+        <p><strong>Husband:</strong> Sudhakar 🤵‍♂️<br>
+           <strong>Wife:</strong> Nivetha Nisha 👰</p>
+
+        <p>Both parties agree to the following romantic terms and conditions:</p>
+
+        <ul>
+            <li>💋 A minimum of one genuine kiss daily. Initiation by either party counts equally.</li>
+
+            <li>📹 In case of physical distance, at least five minutes of romantic video conversation, including one sweet virtual kiss.</li>
+
+            <li>🔥 At least two dedicated private bonding moments per week to maintain emotional and romantic connection.</li>
+
+            <li>✨ Once every month, one special "Magical Night of Eternal Passion" — a celebration of love, trust, heart, and soul.</li>
+
+            <li>➕ Additional romantic clauses may be added at any time based on mutual happiness and love.</li>
+        </ul>
+
+        <p>
+            Failure to comply may result in extra cuddles, surprise hugs,
+            or excessive affection without prior notice 😜
+        </p>
+    </div>
+
+    <div class="signature-section">
+
+        <div class="checkbox-container">
+            <input type="checkbox" id="agree">
+            <label for="agree">I have read, understood, and happily accept this Lifetime Love Agreement 💖</label>
+        </div>
+
+        <button onclick="acceptAgreement()">I Love You ❤️</button>
+
+        <div class="final-message" id="message"></div>
+
+    </div>
+
 </div>
 
 <script>
-	
-/* Generate Random Flowers */
-const flowers = ["🌸","🌹","🌺","🌷","💐"];
+function acceptAgreement() {
+    const checkbox = document.getElementById("agree");
+    const message = document.getElementById("message");
 
-setInterval(() => {
-    let flower = document.createElement("div");
-    flower.className = "flower";
-    flower.innerHTML = flowers[Math.floor(Math.random() * flowers.length)];
-    flower.style.left = Math.random() * 100 + "vw";
-    flower.style.fontSize = Math.random() * 20 + 20 + "px";
-    document.body.appendChild(flower);
-
-    setTimeout(() => {
-        flower.remove();
-    }, 10000);
-}, 400);
+    if (checkbox.checked) {
+        message.innerHTML = "I will love you and only you, until my very last breath. Forever yours ❤️";
+    } else {
+        message.innerHTML = "Please accept the agreement before proceeding, my love 😘";
+    }
+}
 </script>
 
 </body>
