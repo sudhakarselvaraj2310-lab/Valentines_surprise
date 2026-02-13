@@ -4,47 +4,131 @@
 <title>Happy Valentine's Day ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
 <style>
 body {
     margin: 0;
-    background: black;
+    padding: 0;
     overflow: hidden;
-    text-align: center;
+    font-family: 'Poppins', sans-serif;
+
+    /* 🔥 Background Image */
+    background: url('background.JPG') no-repeat center center/cover;
 }
 
+/* Dark Romantic Overlay */
+.overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+}
+
+/* Video Styling (Optional Layer) */
 video {
+    position: fixed;
     width: 100%;
     height: 100vh;
     object-fit: cover;
+    opacity: 0.4; /* Adjust visibility */
 }
 
+/* Main Message */
 .message {
     position: absolute;
-    top: 20%;
+    top: 25%;
     width: 100%;
+    text-align: center;
     color: white;
-    font-size: 30px;
-    text-shadow: 0 0 20px pink;
-    animation: fadeIn 4s ease-in-out forwards;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
+    animation-delay: 1.5s;
 }
 
+.message h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 60px;
+    color: #ff80ab;
+    text-shadow: 0 0 30px #ff4081;
+    margin: 0;
+}
+
+.message p {
+    font-size: 22px;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+/* Signature */
+.signature {
+    margin-top: 40px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 42px;
+    color: #ffc1e3;
+    text-shadow: 0 0 20px pink;
+    opacity: 0;
+    animation: fadeIn 3s ease-in-out forwards;
+    animation-delay: 5s;
+}
+
+/* Fade Animation */
 @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
+    to { opacity: 1; }
+}
+
+/* Floating Hearts */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 22px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.8; }
+    100% { transform: translateY(-110vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
+<!-- Optional Background Video -->
+<video autoplay muted loop>
+    <source src="love.MP4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
 <div class="message">
-    Happy Valentine’s Day My Love 💕<br>
-    You Are My Everything ❤️
+    <h1>Happy Valentine’s Day My Love 💕</h1>
+    <p>
+        You Are My Everything ❤️ <br>
+        My Today. My Tomorrow. My Forever.
+    </p>
+
+    <div class="signature">
+        Forever Yours,<br>
+        Sudhakar 💍
+    </div>
 </div>
 
-<video autoplay controls>
-    <source src="love.MP4" type="video/MP4">
-</video>
+<script>
+// Floating Hearts
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 500);
+</script>
 
 </body>
 </html>
